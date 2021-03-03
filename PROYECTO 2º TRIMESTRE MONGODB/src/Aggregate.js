@@ -39,7 +39,8 @@ db.coches.aggregate([
         LugaresDeVenta: "$LugaresDeVenta",
         PotenciaMaxima: "$PotenciaMaxima",
         PrecioIvaIncluido: "$PrecioIvaIncluido",
-        Porcentaje:{$round: [{$multiply: ["$PrecioIvaIncluido",{ $arrayElemAt: ["$InformacionDeMarca.Descuento", 0]}]},0]},
+        Porcentaje:{$round: [{$multiply: ["$PrecioIvaIncluido",
+                                          { $arrayElemAt: ["$InformacionDeMarca.Descuento", 0]}]},0]},
         InformacionDeMarca: "$InformacionDeMarca" 
             }       
 },
@@ -59,7 +60,8 @@ db.coches.aggregate([
 }
 ]).pretty()
 /*QUEREMOS SABER EL PRECIO CON IVA, EL DINERO QUE NOS VA A DESCONTAR LA MARCA 
-Y CONTACTO CON LA MARCA DE LOS COCHES ADEMAS DE SUS CARACTERISTICAS. EL CLIENTE QUIERE UN COCHE NUEVO Y POSTERIOR AL 2010*/
+Y CONTACTO CON LA MARCA DE LOS COCHES ADEMAS DE SUS CARACTERISTICAS.
+EL CLIENTE QUIERE UN COCHE NUEVO Y POSTERIOR AL 2010*/
 
 db.coches.aggregate([
     {
